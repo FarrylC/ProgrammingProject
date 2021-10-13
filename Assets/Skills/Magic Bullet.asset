@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15a19ad1d76b1af4595e44825ef6e9d9, type: 3}
-  m_Name: Tackle
+  m_Name: Magic Bullet
   m_EditorClassIdentifier: 
-  name: Tackle
-  description: 
+  name: Magic Bullet
+  description: A barage of magic energy.
   level: 1
-  maxLevel: 1
-  manaCost: 
+  maxLevel: 5
+  manaCost: 0100000002000000020000000300000003000000
   applyValue: 
   applyStatus: 0
   applyTarget: 0
@@ -25,17 +25,17 @@ MonoBehaviour:
   convertFromStatus: 0
   convertTarget: 0
   convertToStatus: 0
-  baseDamageValue: 01000000
-  isMagicalDamage: 0
-  damageTarget: 0
-  damageForStatus: 0
-  damageForStatusOnTarget: 0
+  baseDamageValue: 0100000002000000020000000200000003000000
+  isMagicalDamage: 1
+  damageTarget: 2
+  damageForStatus: 1
+  damageForStatusOnTarget: 1
   bonusForStatusOnTarget: 0
   bonusForStatus: 0
   bonusDamageValue: 
   applyStatusAfterDamageValue: 
   applyStatusAfterDamage: 0
-  ApplyStatusAfterDamageTarget: 0
+  applyStatusAfterDamageTarget: 0
   healValue: 
   isPercentage: 0
   doesHealMana: 0

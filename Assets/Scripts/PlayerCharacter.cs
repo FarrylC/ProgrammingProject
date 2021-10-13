@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "Enemy")]
-public class Enemy : ScriptableObject, Character
+[CreateAssetMenu(fileName = "New Player Character", menuName = "Player Character")]
+public class PlayerCharacter : ScriptableObject, Character
 {
     public new string name;
-    private int hp, mana;
+    private int  hp, mana;
     [SerializeField] private int level, maxHp, maxMana, physicalAttack, magicalAttack, physicalDefense, magicalDefense, speed;
     public Sprite sprite;
-    public Item drop;
-    public List<Skill> skills;
+    public List<Skill> startingSkills, skills;
+    [HideInInspector] public int skillPoints;
+    public AnimationCurve maxHpCurve, maxManaCurve, physAtkCurve, magiAtkCurve, physDefCurve, magiDefCurve, speedCurve;
     private List<Status> statuses;
 
     public int Level
@@ -148,7 +149,7 @@ public class Enemy : ScriptableObject, Character
     public void AddStatus(Status status, int stackValue)
     {
         // If the character does not have any statuses, add the status
-        if (statuses.Count == 0)
+        if(statuses.Count == 0)
         {
             statuses.Insert(0, status);
             statuses[0].stackValue += stackValue;

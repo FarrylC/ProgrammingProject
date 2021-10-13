@@ -14,6 +14,9 @@ TagManager:
   - Enemy Status
   - Item Slot
   - Level Up Skill
+  - Player Sprite Renderer
+  - Player Special Status
+  - Enemy Special Status
   layers:
   - Default
   - TransparentFX

@@ -49,7 +49,7 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void UseSkill()
     {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SkillEffect(correspondingSkill);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SkillEffectHelper(correspondingSkill);
     }
 
     public void BackToBattleMenu()
@@ -78,8 +78,7 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().DisplayText(correspondingItem.description);
 
         if(correspondingSkill != null)
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().DisplayText("[LV " + correspondingSkill.level + "] " + correspondingSkill.name +
-                ": " + correspondingSkill.description + " Costs " + correspondingSkill.manaCost + " mana and deals " + correspondingSkill.attack + " damage.");
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().DisplayText(correspondingSkill.ToString());
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)

@@ -132,8 +132,8 @@ GameObject:
   - component: {fileID: 709766389}
   - component: {fileID: 709766388}
   m_Layer: 0
-  m_Name: mage (1)
-  m_TagString: Untagged
+  m_Name: character sprite
+  m_TagString: Player Sprite Renderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,9 +177,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 147a533e38b5d6a43b296dc449e6dd31, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617ae6ecd0e299e468ae6fc1919df156, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.5, y: 1.75}
@@ -196,8 +196,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709766387}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.619995, y: -3.2299957, z: -0.1}
-  m_LocalScale: {x: 9.39345, y: 7.60179, z: 2.6141999}
+  m_LocalPosition: {x: -2.68, y: -0.15, z: -0.1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -385,7 +385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -112, y: -81}
+  m_AnchoredPosition: {x: 230, y: -81}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118928833
@@ -572,15 +572,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e62211624a6b0448aa926ac98a2b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHp: 5
-  playerMaxMana: 3
-  playerSkills: []
-  startingSkills:
-  - {fileID: 11400000, guid: dc02d12531780d5478d1e0eeb35b2f6a, type: 2}
-  - {fileID: 11400000, guid: 9ad5edcabaf1de84cae25556f6ab884b, type: 2}
+  playerMaxHp: 10
+  playerMaxMana: 20
   existingSkills:
-  - {fileID: 11400000, guid: dc02d12531780d5478d1e0eeb35b2f6a, type: 2}
+  - {fileID: 11400000, guid: f0f43240fa304b9419f6dcb3ece1c2d2, type: 2}
+  - {fileID: 11400000, guid: 34ec202daa421fc4e89719907fccc581, type: 2}
   - {fileID: 11400000, guid: 9ad5edcabaf1de84cae25556f6ab884b, type: 2}
+  existingPlayerCharacters:
+  - {fileID: 11400000, guid: d2e6c372759d8ec47b858159f63522db, type: 2}
   existingItems:
   - {fileID: 11400000, guid: d52c4ea000afece4789a5dc5450344a9, type: 2}
   - {fileID: 11400000, guid: 6f6a1622e5569e043bd188d0d2990f73, type: 2}
@@ -588,6 +587,10 @@ MonoBehaviour:
   potentialEnemies:
   - {fileID: 11400000, guid: dae3209634951074cb28c7ca4471efba, type: 2}
   - {fileID: 11400000, guid: 42b7df03007bdb4438c09f05fa2f3118, type: 2}
+  existingStatuses:
+  - {fileID: 11400000, guid: 3e1b5c94ceb4d8d478d84471509d6e19, type: 2}
+  - {fileID: 11400000, guid: 818f28d45477dbe4580adb31c2155c11, type: 2}
+  playerSpriteRenderer: {fileID: 0}
   enemySpriteRender: {fileID: 0}
   playerStatus: {fileID: 0}
   enemyStatus: {fileID: 0}
@@ -860,7 +863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -214, y: 174}
+  m_AnchoredPosition: {x: 204, y: 174}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139603200
@@ -877,7 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

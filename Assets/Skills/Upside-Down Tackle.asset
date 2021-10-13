@@ -16,5 +16,28 @@ MonoBehaviour:
   description: 
   level: 1
   maxLevel: 1
-  manaCost: 0
-  attack: 2
+  manaCost: 
+  applyValue: 
+  applyStatus: 0
+  applyTarget: 0
+  doesConvertAll: 0
+  convertSomeValue: 
+  convertFromStatus: 0
+  convertTarget: 0
+  convertToStatus: 0
+  baseDamageValue: 02000000
+  isMagicalDamage: 0
+  damageTarget: 0
+  damageForStatus: 0
+  damageForStatusOnTarget: 0
+  bonusForStatusOnTarget: 0
+  bonusForStatus: 0
+  bonusDamageValue: 
+  applyStatusAfterDamageValue: 
+  applyStatusAfterDamage: 0
+  ApplyStatusAfterDamageTarget: 0
+  healValue: 
+  isPercentage: 0
+  doesHealMana: 0
+  healForStatus: 0
+  healForStatusOnTarget: 0

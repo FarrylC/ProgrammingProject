@@ -5,23 +5,23 @@ using UnityEngine;
 [System.Serializable]
 public class Save
 {
-    public string[] skillNames, itemNames;
-    public int[] skillLevels, skillCosts, skillAttacks, itemQuantities;
-    public int playerHp, playerMaxHp, playerMana, playerMaxMana, playerSkillPoints;
+    public string[] characterNames, itemNames;
+    public string[][] skillNames;
+    public int[] itemQuantities;
+    public int[][] skillLevels;
+    public int[] characterLevels, characterHp, characterMana, characterSkillPoints;
 
-    public Save(string[] _skillNames, string[] _itemNames, int[] _skillLevels, int[] _skillCosts, int[] _skillAttacks, int[] _itemQuantities, int _playerHp, int _playerMaxHp,
-        int _playerMana, int _playerMaxMana, int _playerSkillPoints)
+    public Save(string[] _characterNames, string[] _itemNames, string[][] _skillNames, int[] _itemQuantities, int[][] _skillLevels, int[] _characterLevels, int[] _characterHp,
+        int[] _characterMana, int[] _characterSkillPoints)
     {
-        skillNames = _skillNames;
+        characterNames = _characterNames;
         itemNames = _itemNames;
-        skillLevels = _skillLevels;
-        skillCosts = _skillCosts;
-        skillAttacks = _skillAttacks;
+        skillNames = _skillNames;
         itemQuantities = _itemQuantities;
-        playerHp = _playerHp;
-        playerMaxHp = _playerMaxHp;
-        playerMana = _playerMana;
-        playerMaxMana = _playerMaxMana;
-        playerSkillPoints = _playerSkillPoints;
+        skillLevels = _skillLevels;
+        characterLevels = _characterLevels;
+        characterHp = _characterHp;
+        characterMana = _characterMana;
+        characterSkillPoints = _characterSkillPoints;
     }
 }

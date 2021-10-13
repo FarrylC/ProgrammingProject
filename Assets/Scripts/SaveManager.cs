@@ -6,8 +6,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveManager
 {
-    public static void CreateSave(string[] _skillNames, string[] _itemNames, int[] _skillLevels, int[] _skillCosts, int[] _skillAttacks, int[] _itemQuantities, int _playerHp,
-        int _playerMaxHp, int _playerMana, int _playerMaxMana, int _playerSkillPoints)
+    public static void CreateSave(string[] _characterNames, string[] _itemNames, string[][] _skillNames, int[] _itemQuantities, int[][] _skillLevels, int[] _characterLevels,
+        int[] _characterHp, int[] _characterMana, int[] _characterSkillPoints)
     {
         // Create formatter for binary formatting
         BinaryFormatter formatter = new BinaryFormatter();
@@ -17,8 +17,7 @@ public static class SaveManager
         FileStream stream = new FileStream(path, FileMode.Create);
 
         // Create save data
-        Save save = new Save(_skillNames, _itemNames, _skillLevels, _skillCosts, _skillAttacks, _itemQuantities, _playerHp, _playerMaxHp, _playerMana, _playerMaxMana,
-            _playerSkillPoints);
+        Save save = new Save(_characterNames, _itemNames, _skillNames, _itemQuantities, _skillLevels, _characterLevels, _characterHp, _characterMana, _characterSkillPoints);
 
         // Serialize and close the stream
         formatter.Serialize(stream, save);

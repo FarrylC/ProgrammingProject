@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15a19ad1d76b1af4595e44825ef6e9d9, type: 3}
-  m_Name: Tackle
+  m_Name: Incantation
   m_EditorClassIdentifier: 
-  name: Tackle
-  description: 
+  name: Incantation
+  description: Focuses the mind.
   level: 1
-  maxLevel: 1
-  manaCost: 
-  applyValue: 
-  applyStatus: 0
-  applyTarget: 0
+  maxLevel: 5
+  manaCost: 0000000000000000010000000100000001000000
+  applyValue: 0300000004000000050000000600000007000000
+  applyStatus: 1
+  applyTarget: 1
   doesConvertAll: 0
   convertSomeValue: 
   convertFromStatus: 0
   convertTarget: 0
   convertToStatus: 0
-  baseDamageValue: 01000000
+  baseDamageValue: 
   isMagicalDamage: 0
   damageTarget: 0
   damageForStatus: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   bonusDamageValue: 
   applyStatusAfterDamageValue: 
   applyStatusAfterDamage: 0
-  ApplyStatusAfterDamageTarget: 0
+  applyStatusAfterDamageTarget: 0
   healValue: 
   isPercentage: 0
   doesHealMana: 0

@@ -15,6 +15,29 @@ MonoBehaviour:
   name: Fireball
   description: A ball of fiery destruction.
   level: 1
-  maxLevel: 3
-  manaCost: 1
-  attack: 3
+  maxLevel: 5
+  manaCost: 0100000002000000020000000300000003000000
+  applyValue: 
+  applyStatus: 0
+  applyTarget: 0
+  doesConvertAll: 0
+  convertSomeValue: 
+  convertFromStatus: 0
+  convertTarget: 0
+  convertToStatus: 0
+  baseDamageValue: 0300000004000000050000000600000007000000
+  isMagicalDamage: 1
+  damageTarget: 2
+  damageForStatus: 0
+  damageForStatusOnTarget: 0
+  bonusForStatusOnTarget: 0
+  bonusForStatus: 0
+  bonusDamageValue: 
+  applyStatusAfterDamageValue: 0100000002000000020000000300000003000000
+  applyStatusAfterDamage: 2
+  applyStatusAfterDamageTarget: 2
+  healValue: 
+  isPercentage: 0
+  doesHealMana: 0
+  healForStatus: 0
+  healForStatusOnTarget: 0
