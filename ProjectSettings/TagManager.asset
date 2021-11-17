@@ -17,6 +17,13 @@ TagManager:
   - Player Sprite Renderer
   - Player Special Status
   - Enemy Special Status
+  - Player HP Bar
+  - Player Mana Bar
+  - Enemy HP Bar
+  - Enemy Mana Bar
+  - Player Battle Animation
+  - Enemy Battle Animation
+  - Battle Menu Back Fill
   layers:
   - Default
   - TransparentFX

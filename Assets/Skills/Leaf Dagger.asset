@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a19ad1d76b1af4595e44825ef6e9d9, type: 3}
+  m_Name: Leaf Dagger
+  m_EditorClassIdentifier: 
+  name: Leaf Dagger
+  description: 
+  level: 1
+  maxLevel: 1
+  manaCost: 00000000
+  animationIndex: 2
+  animationTarget: 2
+  applyValue: 
+  applyStatus: 0
+  applyTarget: 0
+  doesConvertAll: 0
+  convertSomeValue: 
+  convertFromStatus: 0
+  convertTarget: 0
+  convertToStatus: 0
+  baseDamageValue: 02000000
+  isMagicalDamage: 0
+  damageTarget: 2
+  damageForStatus: 0
+  damageForStatusOnTarget: 0
+  bonusForStatusOnTarget: 0
+  bonusForStatus: 0
+  bonusDamageValue: 
+  applyStatusAfterDamageValue: 
+  applyStatusAfterDamage: 0
+  applyStatusAfterDamageTarget: 0
+  healValue: 
+  isPercentage: 0
+  doesHealMana: 0
+  healForStatus: 0
+  healForStatusOnTarget: 0

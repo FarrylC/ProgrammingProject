@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Magic Bullet
   m_EditorClassIdentifier: 
   name: Magic Bullet
-  description: A barage of magic energy.
+  description: A barrage of magic energy.
   level: 1
   maxLevel: 5
   manaCost: 0100000002000000020000000300000003000000
+  animationIndex: 2
+  animationTarget: 2
   applyValue: 
   applyStatus: 0
   applyTarget: 0
@@ -25,7 +27,7 @@ MonoBehaviour:
   convertFromStatus: 0
   convertTarget: 0
   convertToStatus: 0
-  baseDamageValue: 0100000002000000020000000200000003000000
+  baseDamageValue: 0100000002000000030000000400000005000000
   isMagicalDamage: 1
   damageTarget: 2
   damageForStatus: 1

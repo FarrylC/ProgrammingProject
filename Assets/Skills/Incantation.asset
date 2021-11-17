@@ -17,6 +17,8 @@ MonoBehaviour:
   level: 1
   maxLevel: 5
   manaCost: 0000000000000000010000000100000001000000
+  animationIndex: 3
+  animationTarget: 1
   applyValue: 0300000004000000050000000600000007000000
   applyStatus: 1
   applyTarget: 1

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2bc01ba6ebd4445a1290763a1c83ae, type: 3}
+  m_Name: Flora, the Forest Spirit
+  m_EditorClassIdentifier: 
+  name: Flora, the Forest Spirit
+  level: 1
+  maxHp: 10
+  maxMana: 10
+  physicalAttack: 5
+  magicalAttack: 10
+  physicalDefense: 5
+  magicalDefense: 10
+  speed: 10
+  sprite: {fileID: 21300000, guid: 4204755054a7a4f43b3804a73ce266fa, type: 3}
+  drop: {fileID: 11400000, guid: c944a0f5c9e4b82439c68635363be175, type: 2}
+  skills:
+  - {fileID: 11400000, guid: 2a14061b66ecbc74680dac52a08988d1, type: 2}

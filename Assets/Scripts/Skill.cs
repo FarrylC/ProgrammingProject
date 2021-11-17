@@ -13,6 +13,9 @@ public class Skill : ScriptableObject
     
     public int[] manaCost;
 
+    public int animationIndex;
+    public Target animationTarget;
+
     [Header("Effect #1: Apply n stacks of some status to self/enemy")]
     public int[] applyValue;
     public Status.StatusType applyStatus;

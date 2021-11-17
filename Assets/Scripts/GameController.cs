@@ -16,7 +16,8 @@ public class GameController : MonoBehaviour
     public List<Status> existingStatuses;
     public Battle currentBattle;
     public SpriteRenderer playerSpriteRenderer, enemySpriteRender;
-    public GameObject playerStatus, enemyStatus, textbox, battleMenu, skillsMenuInBattle, battleEnd;
+    public Animator playerBattleAnimation, enemyBattleAnimation;
+    public GameObject playerStatus, enemyStatus, playerHPBar, playerManaBar, enemyHPBar, textbox, battleMenu, skillsMenuInBattle, battleEnd, menuBackFill;
     public List<GameObject> playerStatusSlots, enemyStatusSlots, skillSlotsInBattle, itemSlots, skillSlots, levelUpButtons;
 
     public static GameController Instance { get; private set; }
@@ -159,6 +160,7 @@ public class GameController : MonoBehaviour
 
         // End turn
         skillsMenuInBattle.SetActive(false);
+        menuBackFill.SetActive(false);
 
         // Check enemy defeated
         if (currentBattle.enemy.HP <= 0)
@@ -173,7 +175,7 @@ public class GameController : MonoBehaviour
 
     public void SkillEffect(Skill skill, Character self, Character enemy)
     {
-        string battleText = "";
+        string battleText = self.GetCharacterName() + " used " + skill.name + "! ";
 
         // Perform skill effect #1
         if (skill.applyValue.Length != 0)
@@ -343,7 +345,20 @@ public class GameController : MonoBehaviour
             
         }
 
+        // Display result in textbox
         DisplayText(battleText);
+
+        // Determine which battle animation to play
+        string triggerString = "Battle Effect " + skill.animationIndex;
+
+        // If target is player, play animation on player sprite
+        if((skill.animationTarget == Skill.Target.Enemy && enemy == (Character)player.party[0]) || (skill.animationTarget == Skill.Target.Self && self ==
+            (Character)player.party[0]))
+            playerBattleAnimation.SetTrigger(triggerString);
+
+        // Otherwise, play animation on enemy sprite
+        else
+            enemyBattleAnimation.SetTrigger(triggerString);
     }
 
     /*public void CheckSkillTarget(Skill.Target skillTarget, List<Character> targets, string battleText, Character self, Character enemy)
@@ -386,6 +401,8 @@ public class GameController : MonoBehaviour
         PlayerCharacter character = player.party[0];
         string playerStatusText = player.party[0].name + "\nHP: " + character.HP + "/" + character.MaxHP + "\nMana: " + character.Mana + "/" + character.MaxMana;
         playerStatus.GetComponentInChildren<Text>().text = playerStatusText;
+        playerHPBar.GetComponent<Bar>().UpdateBar((float) character.HP / character.MaxHP);
+        playerManaBar.GetComponent<Bar>().UpdateBar((float) character.Mana / character.MaxMana);
 
         // If the player is not in battle, stop here
         if (currentBattle == null)
@@ -408,6 +425,7 @@ public class GameController : MonoBehaviour
         // Update enemy status
         Enemy currentEnemy = currentBattle.enemy;
         enemyStatus.GetComponentInChildren<Text>().text = currentEnemy.name + "\nHP: " + currentEnemy.HP + "/" + currentEnemy.MaxHP;
+        enemyHPBar.GetComponent<Bar>().UpdateBar((float) currentEnemy.HP / currentEnemy.MaxHP);
 
         // Show enemy special statuses
         for (int i = 0; i < enemyStatusSlots.Count; i++)
@@ -601,6 +619,8 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(0.00001f);
 
         playerStatus = GameObject.FindGameObjectWithTag("Player Status");
+        playerHPBar = GameObject.FindGameObjectWithTag("Player HP Bar");
+        playerManaBar = GameObject.FindGameObjectWithTag("Player Mana Bar");
         UpdateBattleStatus();
     }
 
@@ -673,7 +693,10 @@ public class GameController : MonoBehaviour
 
         // Get textboxes for showing status
         playerStatus = GameObject.FindGameObjectWithTag("Player Status");
+        playerHPBar = GameObject.FindGameObjectWithTag("Player HP Bar");
+        playerManaBar = GameObject.FindGameObjectWithTag("Player Mana Bar");
         enemyStatus = GameObject.FindGameObjectWithTag("Enemy Status");
+        enemyHPBar = GameObject.FindGameObjectWithTag("Enemy HP Bar");
 
         // Get status slots for showing player special statuses
         foreach (GameObject statusSlot in GameObject.FindGameObjectsWithTag("Player Special Status"))
@@ -691,7 +714,7 @@ public class GameController : MonoBehaviour
 
         // Get textbox for displaying battle text
         textbox = GameObject.FindGameObjectWithTag("Textbox");
-        DisplayText("A " + currentBattle.enemy.name + " appeared!");
+        DisplayText(currentBattle.enemy.name + " appeared!");
 
         // Get battle menu
         battleMenu = GameObject.FindGameObjectWithTag("Battle Menu");
@@ -699,29 +722,43 @@ public class GameController : MonoBehaviour
         skillsMenuInBattle.SetActive(false);
         battleEnd = GameObject.FindGameObjectWithTag("Battle End");
         battleEnd.SetActive(false);
+        menuBackFill = GameObject.FindGameObjectWithTag("Battle Menu Back Fill");
 
         // Get battle sprites
         playerSpriteRenderer = GameObject.FindGameObjectWithTag("Player Sprite Renderer").GetComponent<SpriteRenderer>();
         playerSpriteRenderer.sprite = player.party[0].sprite;
         enemySpriteRender = GameObject.FindGameObjectWithTag("Enemy Sprite Renderer").GetComponent<SpriteRenderer>();
         enemySpriteRender.sprite = currentBattle.enemy.sprite;
+
+        // Get battle effect animators
+        playerBattleAnimation = GameObject.FindGameObjectWithTag("Player Battle Animation").GetComponent<Animator>();
+        enemyBattleAnimation = GameObject.FindGameObjectWithTag("Enemy Battle Animation").GetComponent<Animator>();
     }
 
     IEnumerator EnemyTurn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         Skill enemySkill = currentBattle.enemy.skills[Random.Range(0, currentBattle.enemy.skills.Count)];
-        int damage = enemySkill.baseDamageValue[enemySkill.level - 1];
+        //int damage = enemySkill.baseDamageValue[enemySkill.level - 1];
 
-        player.party[0].HP -= damage;
-        DisplayText("The enemy " + currentBattle.enemy.name + " used " + enemySkill.name + " and dealt " + damage + " damage.");
+        SkillEffect(enemySkill, currentBattle.enemy, player.party[0]);
+        //DisplayText("The enemy " + currentBattle.enemy.name + " used " + enemySkill.name + " and dealt " + damage + " damage.");
         UpdateBattleStatus();
 
+        // Check if the player still has HP left
         if (player.party[0].HP > 0)
-            battleMenu.SetActive(true);
+            StartCoroutine(WaitForAnimation());
         else
             StartCoroutine(GameOver());
+    }
+
+    IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForSeconds(1);
+
+        battleMenu.SetActive(true);
+        menuBackFill.SetActive(true);
     }
 
     IEnumerator DefeatedEnemy()
@@ -730,10 +767,11 @@ public class GameController : MonoBehaviour
 
         player.party[0].skillPoints++;
         AddToInventory(Instantiate(currentBattle.enemy.drop), 1);
-        DisplayText("Defeated the enemy " + currentBattle.enemy.name + ". Obtained 1 " + currentBattle.enemy.drop.name + ". Gained 1 skill point.");
+        DisplayText("Defeated " + currentBattle.enemy.name + ". Obtained 1 " + currentBattle.enemy.drop.name + ". Gained 1 skill point.");
 
         enemySpriteRender.sprite = null;
         battleEnd.SetActive(true);
+        menuBackFill.SetActive(true);
     }
 
     IEnumerator GameOver()
@@ -741,21 +779,6 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("GameOver");
     }
-
-    /*public class Player
-    {
-        public int hp, maxHp, mana, maxMana, skillPoints;
-
-        // Player constructor
-        public Player(int _maxHp, int _maxMana, int _skillPoints)
-        {
-            hp = _maxHp;
-            maxHp = _maxHp;
-            mana = _maxMana;
-            maxMana = _maxMana;
-            skillPoints = _skillPoints;
-        }
-    }*/
 
     public class InventorySlot
     {

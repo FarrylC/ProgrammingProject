@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccede572b5a447c4497dea59c9faa609, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  name: Mage
-  maxHp: 10
-  maxMana: 20
+  name: Alison, the Witch
+  level: 1
+  maxHp: 30
+  maxMana: 40
   physicalAttack: 5
   magicalAttack: 10
   physicalDefense: 5
   magicalDefense: 10
   speed: 1
-  sprite: {fileID: 21300000, guid: 617ae6ecd0e299e468ae6fc1919df156, type: 3}
+  sprite: {fileID: 21300000, guid: f45a394f9d167f744ad96a52d5a1e82b, type: 3}
   startingSkills:
   - {fileID: 11400000, guid: f0f43240fa304b9419f6dcb3ece1c2d2, type: 2}
   - {fileID: 11400000, guid: 34ec202daa421fc4e89719907fccc581, type: 2}
